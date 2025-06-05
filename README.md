@@ -2,11 +2,15 @@
 
 1) Crear la base de datos:
 
+    ```
     CREATE DATABASE `arbell-app_db` CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+    ```
 
 2) Generar key para la aplicacion:
 
+    ```
     php artisan key:generate
+    ```
 
 3) Conectar aplicacion Laravel a base de datos en .env (crearlo a partir de .env.example)
 
@@ -19,20 +23,28 @@
 
 4) Correr migraciones de tabla
 
+    ```
     php artisan migrate
+    ```
 
 5) Crear usuarios y perfiles de la aplicacion:
 
+    ```
     php artisan db:seed
+    ```
 
 6) Instalar dependencias:
 
+    ```
     npm install
     composer install
+    ```
 
 7) Correr aplicacion:
 
+    ```
     php artisan serv
+    ```
 
 -----------------------------------------------------------------
 
@@ -46,13 +58,16 @@
 _Importante: la aplicacion a traves de API necesita autenticacion tipo Bearer para cualquier usuario del sistema._
 
 ### _Obtener Token_
-Endpoint: POST /api/login
-Body (JSON):
+    Endpoint: POST /api/login
+    Body (JSON):
+```json
 {
   "email": "tu@email.com",
   "password": "tu_contraseña"
 }
-Response:
+```
+    Response:
+```json
 {
   "token": "1|qwerty123456abcdef...",
   "user": {
@@ -61,12 +76,14 @@ Response:
     "email": "tu@email.com"
   }
 }
+```
 
 ### _Editar Usuario_
-Endpoint: PUT /api/user
-Header: Authorization: Bearer 1|qwerty123456abcdef...
-        Content-Type: application/json
-Params (JSON):
+    Endpoint: PUT /api/user
+    Header: Authorization: Bearer 1|qwerty123456abcdef...
+            Content-Type: application/json
+    Params (JSON):
+```json
 {
     "name": "",
     "email": "",
@@ -74,9 +91,11 @@ Params (JSON):
     "phone": "",
     "profile_id": ""
 }
-Response:
+```
+    Response:
+```json
 {
-    "message": "Usuario actualizado correctamente."
+    "message": "Usuario actualizado correctamente.",
     "user": {
         "id": "",
         "name": "",
@@ -89,21 +108,25 @@ Response:
         "deleted_at": ""
     }
 }
+```
 
 ### _Remover Usuario_
-Endpoint: DELETE /api/user
-Header: Authorization: Bearer 1|qwerty123456abcdef...
-        Content-Type: application/json
-Response:
+    Endpoint: DELETE /api/user
+    Header: Authorization: Bearer 1|qwerty123456abcdef...
+            Content-Type: application/json
+    Response:
+```json
 {
     "message": "Usuario eliminado correctamente."
 }
+```
 
 ### _Obtener Todos los Usuarios (solo usuarios Admin)_
-Endpoint: GET /api/users
-Header: Authorization: Bearer 1|qwerty123456abcdef...
-        Content-Type: application/json
-Response:
+    Endpoint: GET /api/users
+    Header: Authorization: Bearer 1|qwerty123456abcdef...
+            Content-Type: application/json
+    Response:
+```json
 [
     {
     "id": "1",
@@ -128,3 +151,4 @@ Response:
         "deleted_at": "" 
     }
 ]
+```
